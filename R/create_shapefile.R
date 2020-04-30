@@ -11,7 +11,7 @@
 
 create_shapefile <- function(state_abb){
   message("This may take a while...")
-  dis_map <- rgdal::readOGR("./inst/extdata", "schooldistrict_sy1819_tl19")
+  dis_map <- rgdal::readOGR("./extdata", "schooldistrict_sy1819_tl19")
   if(state_abb == "All"){
     dis_map
   } else {
