@@ -10,7 +10,7 @@ Authors@R:
              family = "Rosenberg",
              role = "aut",
              email = "jmichaelrosenberg@gmail.com"))
-Description: Easier mapping of U.S. school districts.
+Description: Easier mapping of U.S. school districts
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

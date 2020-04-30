@@ -11,8 +11,9 @@
 
 create_shapefile <- function(state_abb){
   message("This may take a while...")
-  fpath <- system.file("extdata", "schooldistrict_sy1819_tl19.shp", package = "leaidr")
-  dis_map <- rgdal::readOGR(fpath)
+  dis_map_rds <- leaidr::dis_map
+  writeOGR(dis_map_rds, dsn = "./shapefile", layer = "schooldistrict_sy1819_tl19", driver = "ESRI Shapefile")
+  dis_map <- rgdal::readOGR("./shapefile", "schooldistrict_sy1819_tl19")
   if(state_abb == "All"){
     dis_map
   } else {
