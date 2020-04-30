@@ -11,7 +11,8 @@
 
 create_shapefile <- function(state_abb){
   message("This may take a while...")
-  dis_map <- rgdal::readOGR("./extdata", "schooldistrict_sy1819_tl19")
+  fpath <- system.file("extdata", "schooldistrict_sy1819_tl19.shp", package = "leaidr")
+  dis_map <- rgdal::readOGR(fpath)
   if(state_abb == "All"){
     dis_map
   } else {
