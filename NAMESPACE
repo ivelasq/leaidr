@@ -2,4 +2,5 @@
 
 export("%>%")
 export(create_shapefile)
+export(load_shapefile)
 importFrom(magrittr,"%>%")
