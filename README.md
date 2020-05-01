@@ -25,16 +25,25 @@ devtools::install_github("ivelasq/leaidr")
 The original shapefiles can be found on the [National Center for
 Education
 Statistics](https://nces.ed.gov/programs/edge/Geographic/DistrictBoundaries)
-site. These files are from 2019. State names and abbreviations were
-added (the originals only have FIP codes).
+site. These files are from 2019.
+
+We’ll work on adding state names/abbreviation so we don’t have to use
+FIPS.
+
+## Load the U.S. Shapefile
+
+Load the shapefile for the entire U.S. using `load_shapefile()`. It may
+take a while - the large .shp was uploaded to Github using {piggyback}.
+Once you have loaded it, you shouldn’t have to do it again unless you
+delete the package.
 
 ## Create a Shapefile
 
 Run the function `create_shapefile()` to create a shapefile with
-district boundaries. If you want the entire U.S., then designate
-`state_abb = "All"`. If you want a specific state, then designate it
-with the state abbrevation `state_abb = "CA"`. To designate multiple
-states, designate it in a vector `state_abb = c("CA", "TX")`.
+district boundaries. If you want the entire U.S., then designate `fips =
+"All"`. If you want a specific state, then designate it with the state
+abbrevation `fips = "47`. To designate multiple states, designate it in
+a vector `fips = c("47", "06")`.
 
 ## Use the Data
 
@@ -47,12 +56,14 @@ You can also plot the shapefiles in {leaflet} and {ggplot2}.
 library(leaidr)
 library(leaflet)
 
-tn <- create_shapefile(state_abb = "TN")
-#> This may take a while...
+# if you haven't loaded the shapefile
+# load_shapefile()
+
+tn <- create_shapefile(fips = "47")
 #> OGR data source with driver: ESRI Shapefile 
-#> Source: "/Users/shortessay/leaidr/inst/extdata", layer: "schooldistrict_sy1819_tl19"
+#> Source: "/Users/shortessay/leaidr/default/Downloads", layer: "schooldistrict_sy1819_tl19"
 #> with 13315 features
-#> It has 20 fields
+#> It has 18 fields
 
 leaflet(tn) %>% 
   addPolygons(weight = 0.3, 
@@ -70,29 +81,32 @@ leaflet(tn) %>%
 library(leaidr)
 library(tidyverse)
 #> ── Attaching packages ────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
-#> ✓ ggplot2 3.3.0     ✓ purrr   0.3.3
-#> ✓ tibble  3.0.0     ✓ dplyr   0.8.5
+#> ✓ ggplot2 3.3.0     ✓ purrr   0.3.4
+#> ✓ tibble  3.0.1     ✓ dplyr   0.8.5
 #> ✓ tidyr   1.0.2     ✓ stringr 1.4.0
 #> ✓ readr   1.3.1     ✓ forcats 0.5.0
 #> ── Conflicts ───────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()
 
-tn <- create_shapefile(state_abb = "TN")
-#> This may take a while...
+# if you haven't loaded the shapefile
+# load_shapefile()
+
+tn <- create_shapefile(fips = "47")
 #> OGR data source with driver: ESRI Shapefile 
-#> Source: "/Users/shortessay/leaidr/inst/extdata", layer: "schooldistrict_sy1819_tl19"
+#> Source: "/Users/shortessay/leaidr/default/Downloads", layer: "schooldistrict_sy1819_tl19"
 #> with 13315 features
-#> It has 20 fields
-tn_df <- fortify(tn)
+#> It has 18 fields
+tn_df <- ggplot2::fortify(tn)
 #> Regions defined for each Polygons
 
 map <-
   ggplot() +
-  geom_path(data = tn_df, 
+  geom_path(data = tn, 
             aes(x = long, y = lat, group = group),
             color = "gray", size = .2) +
-  theme_minimal()
+  theme_void()
+#> Regions defined for each Polygons
 
 map_projected <- map +
   coord_map()

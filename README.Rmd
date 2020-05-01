@@ -31,11 +31,17 @@ devtools::install_github("ivelasq/leaidr")
 
 ## About
 
-The original shapefiles can be found on the [National Center for Education Statistics](https://nces.ed.gov/programs/edge/Geographic/DistrictBoundaries) site. These files are from 2019. State names and abbreviations were added (the originals only have FIP codes).
+The original shapefiles can be found on the [National Center for Education Statistics](https://nces.ed.gov/programs/edge/Geographic/DistrictBoundaries) site. These files are from 2019.
+
+We'll work on adding state names/abbreviation so we don't have to use FIPS.
+
+## Load the U.S. Shapefile
+
+Load the shapefile for the entire U.S. using `load_shapefile()`. It may take a while - the large .shp was uploaded to Github using {piggyback}. Once you have loaded it, you shouldn't have to do it again unless you delete the package.
 
 ## Create a Shapefile
 
-Run the function `create_shapefile()` to create a shapefile with district boundaries. If you want the entire U.S., then designate `state_abb = "All"`. If you want a specific state, then designate it with the state abbrevation `state_abb = "CA"`. To designate multiple states, designate it in a vector `state_abb = c("CA", "TX")`.
+Run the function `create_shapefile()` to create a shapefile with district boundaries. If you want the entire U.S., then designate `fips = "All"`. If you want a specific state, then designate it with the state abbrevation `fips = "47`. To designate multiple states, designate it in a vector `fips = c("47", "06")`.
 
 ## Use the Data
 
@@ -47,7 +53,10 @@ Once you have the shapefile, you can merge other data using `merge()`. You can a
 library(leaidr)
 library(leaflet)
 
-tn <- create_shapefile(state_abb = "TN")
+# if you haven't loaded the shapefile
+# load_shapefile()
+
+tn <- create_shapefile(fips = "47")
 
 leaflet(tn) %>% 
   addPolygons(weight = 0.3, 
@@ -59,19 +68,22 @@ leaflet(tn) %>%
 
 ### ggplot2 Example
 
-```{r}
+```{r, dpi = 300}
 library(leaidr)
 library(tidyverse)
 
-tn <- create_shapefile(state_abb = "TN")
-tn_df <- fortify(tn)
+# if you haven't loaded the shapefile
+# load_shapefile()
+
+tn <- create_shapefile(fips = "47")
+tn_df <- ggplot2::fortify(tn)
 
 map <-
   ggplot() +
-  geom_path(data = tn_df, 
+  geom_path(data = tn, 
             aes(x = long, y = lat, group = group),
             color = "gray", size = .2) +
-  theme_minimal()
+  theme_void()
 
 map_projected <- map +
   coord_map()
