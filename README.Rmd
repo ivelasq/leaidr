@@ -37,11 +37,13 @@ We'll work on adding state names/abbreviation so we don't have to use FIPS.
 
 ## Load the U.S. Shapefile
 
-Load the shapefile for the entire U.S. using `load_shapefile()`. It may take a while - the large .shp was uploaded to Github using {piggyback}. Once you have loaded it, you shouldn't have to do it again unless you delete the package.
+Load the shapefile for the entire U.S. using `load_shapefile()`. **You must have a GITHUB_PAT.** You can set a token in your [developer settings](https://github.com/settings/tokens) and save it in your R Environment. More info can be found in [Happy Git with R](https://happygitwithr.com/github-pat.html).
+
+Loading may take a while - large files were uploaded to Github using {piggyback}. Once you have loaded it, you shouldn't have to do it again unless you delete the package.
 
 ## Create a Shapefile
 
-Run the function `create_shapefile()` to create a shapefile with district boundaries. If you want the entire U.S., then designate `fips = "All"`. If you want a specific state, then designate it with the state abbrevation `fips = "47`. To designate multiple states, designate it in a vector `fips = c("47", "06")`.
+Run the function `create_shapefile()` to create a shapefile with district boundaries. If you want the entire U.S., then designate `fips = "All"`. If you want a specific state, then designate it with the state abbrevation `fips = "47"`. To designate multiple states, designate it in a vector `fips = c("47", "06")`.
 
 ## Use the Data
 
@@ -68,7 +70,7 @@ leaflet(tn) %>%
 
 ### ggplot2 Example
 
-```{r, dpi = 300}
+```{r, dpi = 300, message = FALSE}
 library(leaidr)
 library(tidyverse)
 

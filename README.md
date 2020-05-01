@@ -32,17 +32,22 @@ FIPS.
 
 ## Load the U.S. Shapefile
 
-Load the shapefile for the entire U.S. using `load_shapefile()`. It may
-take a while - the large .shp was uploaded to Github using {piggyback}.
-Once you have loaded it, you shouldn’t have to do it again unless you
-delete the package.
+Load the shapefile for the entire U.S. using `load_shapefile()`. **You
+must have a GITHUB\_PAT.** You can set a token in your [developer
+settings](https://github.com/settings/tokens) and save it in your R
+Environment. More info can be found in [Happy Git with
+R](https://happygitwithr.com/github-pat.html).
+
+Loading may take a while - large files were uploaded to Github using
+{piggyback}. Once you have loaded it, you shouldn’t have to do it again
+unless you delete the package.
 
 ## Create a Shapefile
 
 Run the function `create_shapefile()` to create a shapefile with
 district boundaries. If you want the entire U.S., then designate `fips =
 "All"`. If you want a specific state, then designate it with the state
-abbrevation `fips = "47`. To designate multiple states, designate it in
+abbrevation `fips = "47"`. To designate multiple states, designate it in
 a vector `fips = c("47", "06")`.
 
 ## Use the Data
@@ -80,14 +85,6 @@ leaflet(tn) %>%
 ``` r
 library(leaidr)
 library(tidyverse)
-#> ── Attaching packages ────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
-#> ✓ ggplot2 3.3.0     ✓ purrr   0.3.4
-#> ✓ tibble  3.0.1     ✓ dplyr   0.8.5
-#> ✓ tidyr   1.0.2     ✓ stringr 1.4.0
-#> ✓ readr   1.3.1     ✓ forcats 0.5.0
-#> ── Conflicts ───────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-#> x dplyr::filter() masks stats::filter()
-#> x dplyr::lag()    masks stats::lag()
 
 # if you haven't loaded the shapefile
 # load_shapefile()
@@ -98,7 +95,6 @@ tn <- create_shapefile(fips = "47")
 #> with 13315 features
 #> It has 18 fields
 tn_df <- ggplot2::fortify(tn)
-#> Regions defined for each Polygons
 
 map <-
   ggplot() +
@@ -106,7 +102,6 @@ map <-
             aes(x = long, y = lat, group = group),
             color = "gray", size = .2) +
   theme_void()
-#> Regions defined for each Polygons
 
 map_projected <- map +
   coord_map()
