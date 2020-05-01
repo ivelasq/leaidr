@@ -9,12 +9,12 @@
 #' @rdname create_shapefile
 #' @export
 
-create_shapefile <- function(state_abb){
+create_shapefile <- function(fips){
   dis_map <- rgdal::readOGR("./default/Downloads", "schooldistrict_sy1819_tl19")
-  if(state_abb == "All"){
+  if(fips == "All"){
     dis_map
   } else {
     dis_map <-
-      dis_map[which(dis_map$state %in% state_abb),]
+      dis_map[which(dis_map$STATEFP %in% fips),]
   }
 }
