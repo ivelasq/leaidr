@@ -19,6 +19,7 @@ RoxygenNote: 7.1.0
 Imports: 
     dplyr,
     rgdal,
-    magrittr
+    magrittr,
+    devtools
 Depends: 
     R (>= 2.10)
