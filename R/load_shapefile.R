@@ -11,7 +11,7 @@
 
 load_shapefile <- function() {
   message("This may take a while...")
-  piggyback::pb_download()
+  piggyback::pb_download(repo = "ivelasq/leaidr")
   load("~/leaidr/default/Downloads/schooldistrict_rda.rda")
   suppressWarnings(
     rgdal::writeOGR(
