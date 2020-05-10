@@ -33,62 +33,46 @@ devtools::install_github("ivelasq/leaidr")
 
 The original shapefiles can be found on the [National Center for Education Statistics](https://nces.ed.gov/programs/edge/Geographic/DistrictBoundaries) site. These files are from 2019.
 
-We'll work on adding state names/abbreviation so we don't have to use FIPS.
+We'll work on adding state names/abbreviation so we don't have to use FIPS, but [here](https://www.mcc.co.mercer.pa.us/dps/state_fips_code_listing.htm) are the codes for quick reference.
 
-## Load the U.S. Shapefile
+## Get the U.S. Shapefile
 
-Load the shapefile for the entire U.S. using `load_shapefile()`. **You must have a GITHUB_PAT.** You can set a token in your [developer settings](https://github.com/settings/tokens) and save it in your R Environment. More info can be found in [Happy Git with R](https://happygitwithr.com/github-pat.html).
+Load the shapefile for the entire U.S. using `get_sh()`. Loading may take a while - large files were uploaded to Github using {piggyback}. You will have to load the shapefile anytime you're in a new directory/project.
 
-Loading may take a while - large files were uploaded to Github using {piggyback}. Once you have loaded it, you shouldn't have to do it again unless you delete the package.
+* **You must have a GITHUB_PAT before you can run `get_sh()`.** You can set a token in your [developer settings](https://github.com/settings/tokens) and save it in your R Environment. More info can be found in [Happy Git with R](https://happygitwithr.com/github-pat.html).
 
-## Create a Shapefile
+## Prep a Shapefile
 
-Run the function `create_shapefile()` to create a shapefile with district boundaries. If you want the entire U.S., then designate `fips = "All"`. If you want a specific state, then designate it with the state abbrevation `fips = "47"`. To designate multiple states, designate it in a vector `fips = c("47", "06")`.
+Run the function `prep_sh()` to create a shapefile with district boundaries. If you want the entire U.S., then designate `fips = "All"`. If you want a specific state, then designate it with the state abbrevation `fips = "47"`. To designate multiple states, designate it in a vector `fips = c("47", "06")`.
 
 ## Use the Data
 
 Once you have the shapefile, you can merge other data using `merge()`. You can also plot the shapefiles in {leaflet} and {ggplot2}.
 
-### Leaflet Example
-
-```{r}
-library(leaidr)
-library(leaflet)
-
-# if you haven't loaded the shapefile
-# load_shapefile()
-
-tn <- create_shapefile(fips = "47")
-
-leaflet(tn) %>% 
-  addPolygons(weight = 0.3, 
-              smoothFactor = 0.5,
-              opacity = 1.0, 
-              color = "white") %>% 
-  setView(-86.5804, 35.5175, zoom = 6)
-```
-
 ### ggplot2 Example
 
-```{r, dpi = 300, message = FALSE}
+```{r, message = FALSE, dpi = 300}
 library(leaidr)
-library(tidyverse)
+library(ggplot2)
+library(mapproj)
 
-# if you haven't loaded the shapefile
-# load_shapefile()
+# if you haven't downloaded the shapefile
+# get_sh(path = "./leaid_sh")
 
-tn <- create_shapefile(fips = "47")
+tn <- prep_sh(path = "./leaid_sh", fips = "47")
+
 tn_df <- ggplot2::fortify(tn)
 
-map <-
+tn_map <-
   ggplot() +
   geom_path(data = tn, 
             aes(x = long, y = lat, group = group),
             color = "gray", size = .2) +
   theme_void()
 
-map_projected <- map +
+tn_map_projected <- 
+  tn_map +
   coord_map()
 
-print(map_projected)
+print(tn_map_projected)
 ```
