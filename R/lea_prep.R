@@ -1,15 +1,15 @@
 #' Prep State- or Nation-Wide District Shapefile
 #'
 #' @description
-#' `prep_sh()` creates your designated shapefile
+#' `lea_prep()` creates your designated shapefile
 #'
 #' @usage
-#' prep_sh()
+#' lea_prep()
 #'
-#' @rdname prep_sh
-#' @export prep_sh
+#' @rdname lea_prep
+#' @export lea_prep
 
-prep_sh <- function(path = NULL, fips = NULL){
+lea_prep <- function(path = NULL, fips = NULL){
   if(is.null(path)){
     stop("Please designate where the .shp file from `get_sh()` exists, like this: `path = './test'`.")
   }

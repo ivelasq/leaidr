@@ -37,13 +37,13 @@ We'll work on adding state names/abbreviation so we don't have to use FIPS, but 
 
 ## Get the U.S. Shapefile
 
-Load the shapefile for the entire U.S. using `get_sh()`. Loading may take a while - large files were uploaded to Github using {piggyback}. You will have to load the shapefile anytime you're in a new directory/project.
+Load the shapefile for the entire U.S. using `lea_get()`. Loading may take a while - large files were uploaded to Github using {piggyback}. You will have to load the shapefile anytime you're in a new directory/project.
 
 * **You must have a GITHUB_PAT before you can run `get_sh()`.** You can set a token in your [developer settings](https://github.com/settings/tokens) and save it in your R Environment. More info can be found in [Happy Git with R](https://happygitwithr.com/github-pat.html).
 
 ## Prep a Shapefile
 
-Run the function `prep_sh()` to create a shapefile with district boundaries. If you want the entire U.S., then designate `fips = "All"`. If you want a specific state, then designate it with the state abbrevation `fips = "47"`. To designate multiple states, designate it in a vector `fips = c("47", "06")`.
+Run the function `lea_prep()` to create a shapefile with district boundaries. If you want the entire U.S., then designate `fips = "All"`. If you want a specific state, then designate it with the state abbrevation `fips = "47"`. To designate multiple states, designate it in a vector `fips = c("47", "06")`.
 
 ## Use the Data
 
@@ -57,9 +57,9 @@ library(ggplot2)
 library(mapproj)
 
 # if you haven't downloaded the shapefile
-# get_sh(path = "./leaid_sh")
+# lea_get(path = "./leaid_sh")
 
-tn <- prep_sh(path = "./leaid_sh", fips = "47")
+tn <- lea_prep(path = "./leaid_sh", fips = "47")
 
 tn_df <- ggplot2::fortify(tn)
 

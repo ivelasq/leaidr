@@ -34,7 +34,7 @@ are the codes for quick reference.
 
 ## Get the U.S. Shapefile
 
-Load the shapefile for the entire U.S. using `get_sh()`. Loading may
+Load the shapefile for the entire U.S. using `lea_get()`. Loading may
 take a while - large files were uploaded to Github using {piggyback}.
 You will have to load the shapefile anytime you’re in a new
 directory/project.
@@ -47,7 +47,7 @@ directory/project.
 
 ## Prep a Shapefile
 
-Run the function `prep_sh()` to create a shapefile with district
+Run the function `lea_prep()` to create a shapefile with district
 boundaries. If you want the entire U.S., then designate `fips = "All"`.
 If you want a specific state, then designate it with the state
 abbrevation `fips = "47"`. To designate multiple states, designate it in
@@ -66,9 +66,9 @@ library(ggplot2)
 library(mapproj)
 
 # if you haven't downloaded the shapefile
-# get_sh(path = "./leaid_sh")
+# lea_get(path = "./leaid_sh")
 
-tn <- prep_sh(path = "./leaid_sh", fips = "47")
+tn <- lea_prep(path = "./leaid_sh", fips = "47")
 #> OGR data source with driver: ESRI Shapefile 
 #> Source: "/Users/shortessay/leaidr/leaid_sh/schooldistrict_sy1819_tl19.shp", layer: "schooldistrict_sy1819_tl19"
 #> with 13315 features

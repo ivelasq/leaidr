@@ -1,15 +1,15 @@
 #' Get Nation-Wide District Shapefile
 #'
 #' @description
-#' `get_sh()` creates your designated shapefile
+#' `lea_get()` creates your designated shapefile
 #'
 #' @usage
-#' get_sh()
+#' lea_get()
 #'
-#' @rdname get_sh
-#' @export get_sh
+#' @rdname lea_get
+#' @export lea_get
 
-get_sh <- function(path = NULL) {
+lea_get <- function(path = NULL) {
   if(is.null(path)){
     stop("Please designate a file path, like this: `path = './test'`.")
   }
