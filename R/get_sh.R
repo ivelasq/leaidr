@@ -7,12 +7,13 @@
 #' get_shapefile()
 #'
 #' @rdname get_shapefile
-#' @export
+#' @export get_shapefile
 
 get_shapefile <- function(path = NULL) {
   if(is.null(path)){
     stop("Please designate a file path, like this: `path = './test'`.")
   }
+  fs::dir_create(path)
   message("This may take a while...")
   piggyback::pb_download(file = "schooldistrict_rda.rda",
                          repo = "ivelasq/leaidr",
