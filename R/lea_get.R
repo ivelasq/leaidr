@@ -1,7 +1,7 @@
 #' Get Nation-Wide District Shapefile
 #'
 #' @description
-#' `lea_get()` creates your designated shapefile
+#' `lea_get()`downloads the U.S. district shapefile
 #'
 #' @usage
 #' lea_get()

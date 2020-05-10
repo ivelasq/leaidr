@@ -7,5 +7,5 @@
 lea_prep()
 }
 \description{
-\code{lea_prep()} creates your designated shapefile
+\code{lea_prep()} creates your desired shapefile
 }

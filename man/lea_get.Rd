@@ -7,5 +7,5 @@
 lea_get()
 }
 \description{
-\code{lea_get()} creates your designated shapefile
+\code{lea_get()}downloads the U.S. district shapefile
 }
