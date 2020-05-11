@@ -4,8 +4,16 @@
 \alias{lea_prep}
 \title{Prep State- or Nation-Wide District Shapefile}
 \usage{
-lea_prep()
+lea_prep(path = NULL, fips = NULL)
+}
+\arguments{
+\item{path}{A character vector specifying a file path, such as: path = "./test".}
+
+\item{fips}{A character vector specifying a FIPS code for a state. A reference table is available \href{https://www.mcc.co.mercer.pa.us/dps/state_fips_code_listing.htm}{here}.}
+}
+\value{
+A shapefile.
 }
 \description{
-\code{lea_prep()} creates your desired shapefile
+\code{lea_prep()} creates your desired shapefile.
 }

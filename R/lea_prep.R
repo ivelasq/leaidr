@@ -1,14 +1,22 @@
 #' Prep State- or Nation-Wide District Shapefile
 #'
+#' @name lea_prep
+#' @aliases lea_prep
+#' @export lea_prep
+#' 
 #' @description
-#' `lea_prep()` creates your desired shapefile
-#'
+#' `lea_prep()` creates your desired shapefile.
 #' @usage
-#' lea_prep()
+#' lea_prep(path = NULL, fips = NULL)
+#' 
+#' @param path A character vector specifying a file path, such as: path = "./test".
+#' @param fips A character vector specifying a FIPS code for a state. A reference table is available [here](https://www.mcc.co.mercer.pa.us/dps/state_fips_code_listing.htm).
 #'
 #' @rdname lea_prep
 #' @export lea_prep
-
+#' 
+#' @return 
+#' A shapefile.
 lea_prep <- function(path = NULL, fips = NULL){
   if(is.null(path)){
     stop("Please designate where the shapefiles from `lea_get()` exist, like this: `path = './test'`.")

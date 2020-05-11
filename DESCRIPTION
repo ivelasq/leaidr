@@ -1,5 +1,5 @@
 Package: leaidr
-Title: U.S. School District Maps
+Title: U.S. School District Shapefiles
 Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "Isabella",
@@ -10,7 +10,7 @@ Authors@R:
              family = "Rosenberg",
              role = "aut",
              email = "jmichaelrosenberg@gmail.com"))
-Description: Easier mapping of U.S. school districts.
+Description: Easier mapping of U.S. school districts by downloading and prepping NCES geography files.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

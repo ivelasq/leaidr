@@ -1,14 +1,21 @@
 #' Get Nation-Wide District Shapefile
 #'
+#' @name lea_get
+#' @aliases lea_get
+#' @export lea_get
+#' 
 #' @description
-#' `lea_get()`downloads the U.S. district shapefile
-#'
+#' `lea_get()`downloads the U.S. district shapefile from GitHub.
 #' @usage
-#' lea_get()
+#' lea_get(path = NULL)
+#' 
+#' @param path A character vector specifying a file path, such as: path = "./test".
 #'
 #' @rdname lea_get
 #' @export lea_get
-
+#' 
+#' @return
+#' An RDS object and shapefiles.
 lea_get <- function(path = NULL) {
   if(is.null(path)){
     stop("Please designate a file path, like this: `path = './test'`.")

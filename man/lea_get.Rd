@@ -4,8 +4,14 @@
 \alias{lea_get}
 \title{Get Nation-Wide District Shapefile}
 \usage{
-lea_get()
+lea_get(path = NULL)
+}
+\arguments{
+\item{path}{A character vector specifying a file path, such as: path = "./test".}
+}
+\value{
+An RDS object and shapefiles.
 }
 \description{
-\code{lea_get()}downloads the U.S. district shapefile
+\code{lea_get()}downloads the U.S. district shapefile from GitHub.
 }

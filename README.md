@@ -22,27 +22,33 @@ devtools::install_github("ivelasq/leaidr")
 
 ## About
 
-The original shapefiles can be found on the [National Center for
-Education
-Statistics](https://nces.ed.gov/programs/edge/Geographic/DistrictBoundaries)
+School districts in the U.S. have associated local education agency
+identification numbers (LEAID) used in the [National Center for
+Education Statistics (NCES)](https://nces.ed.gov/) Common Core of Data.
+These are very useful because if you have other datasets with NCES ID’s,
+then you can (sometimes easily) join them.
+
+The original shapefiles can be found on the
+[NCES](https://nces.ed.gov/programs/edge/Geographic/DistrictBoundaries)
 site. These files are from 2019.
 
-We’ll work on adding state names/abbreviation so we don’t have to use
-FIPS, but
-[here](https://www.mcc.co.mercer.pa.us/dps/state_fips_code_listing.htm)
-are the codes for quick reference.
+For now, you must use the state’s FIPS code. FIPS state codes are
+numeric and two-letter alphabetic codes to identify U.S. states and
+certain other associated areas.
+[Here](https://www.mcc.co.mercer.pa.us/dps/state_fips_code_listing.htm)
+is a table with the codes for quick reference.
 
 ## Get the U.S. Shapefile
 
 Load the shapefile for the entire U.S. using `lea_get()`. Loading may
-take a while - large files were uploaded to Github using {piggyback}.
-You will have to load the shapefile anytime you’re in a new
+take a while - large files were uploaded to GitHub using ROpenSci’s
+{piggyback}. You will have to load the shapefile anytime you’re in a new
 directory/project.
 
 **You must have a GITHUB\_PAT before you can run `get_sh()`.** You can
 set a token in your [developer
 settings](https://github.com/settings/tokens) and save it in your R
-Environment. More info can be found in [Happy Git with
+Environment. More info can be found in [Happy git with
 R](https://happygitwithr.com/github-pat.html).
 
 ## Prep a Shapefile
@@ -55,8 +61,7 @@ a vector `fips = c("47", "06")`.
 
 ## Use the Data
 
-Once you have the shapefile, you can merge other data using `merge()`.
-You can also plot the shapefiles in {leaflet} and {ggplot2}.
+Once you have the shapefile, you can plot using {leaflet} and {ggplot2}.
 
 ### ggplot2 Example
 
@@ -91,3 +96,9 @@ print(tn_map_projected)
 ```
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+
+### Merged Data Example
+
+You can merge other data to the shapefiles using `merge()`. A
+walkthrough on how to do this is available on my
+[blog](https://ivelasq.rbind.io/blog/leaid-shapefiles/).
