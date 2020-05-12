@@ -45,7 +45,7 @@ take a while - large files were uploaded to GitHub using ROpenSci’s
 {piggyback}. You will have to load the shapefile anytime you’re in a new
 directory/project.
 
-**You must have a GITHUB\_PAT before you can run `get_sh()`.** You can
+**You must have a GITHUB\_PAT before you can run `lea_get()`.** You can
 set a token in your [developer
 settings](https://github.com/settings/tokens) and save it in your R
 Environment. More info can be found in [Happy git with

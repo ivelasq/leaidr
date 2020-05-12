@@ -41,7 +41,7 @@ For now, you must use the state’s FIPS code. FIPS state codes are numeric and 
 
 Load the shapefile for the entire U.S. using `lea_get()`. Loading may take a while - large files were uploaded to GitHub using ROpenSci's {piggyback}. You will have to load the shapefile anytime you're in a new directory/project.
 
-**You must have a GITHUB_PAT before you can run `get_sh()`.** You can set a token in your [developer settings](https://github.com/settings/tokens) and save it in your R Environment. More info can be found in [Happy git with R](https://happygitwithr.com/github-pat.html).
+**You must have a GITHUB_PAT before you can run `lea_get()`.** You can set a token in your [developer settings](https://github.com/settings/tokens) and save it in your R Environment. More info can be found in [Happy git with R](https://happygitwithr.com/github-pat.html).
 
 ## Prep a Shapefile
 
