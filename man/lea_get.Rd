@@ -7,7 +7,9 @@
 lea_get(path = NULL)
 }
 \arguments{
-\item{path}{A character vector specifying a file path, such as: path = "./test".}
+\item{path}{A character vector specifying a file path, such as:
+path = "./test". Will attempt to create the directory if it does not
+currently exist.}
 }
 \value{
 An RDS object and shapefiles.

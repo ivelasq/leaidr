@@ -24,8 +24,8 @@ lea_prep <- function(path = NULL, fips = NULL){
   if(is.null(fips)){
     stop("Please designate which fip(s) you would like. If you would like the whole U.S., please write `fips = 'All'`.")
   }
-  dis_map <- rgdal::readOGR(dsn = paste0(path, "/schooldistrict_sy1819_tl19.shp"),
-                            layer = "schooldistrict_sy1819_tl19")
+  dis_map <- readOGR(dsn = file.path(path, "schooldistrict_sy1819_tl19.shp"),
+                     layer = "schooldistrict_sy1819_tl19")
   if(fips == "All"){
     dis_map
   } else {
