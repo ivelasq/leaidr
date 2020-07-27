@@ -4,7 +4,7 @@
 \alias{lea_get}
 \title{Get Nation-Wide District Shapefile}
 \usage{
-lea_get(path = NULL)
+lea_get(state = NULL)
 }
 \arguments{
 \item{state}{Either a FIPS code or two-digit abbreviation for the state to

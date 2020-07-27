@@ -31,7 +31,7 @@ create_paths <- function(fip) {
 #' @description
 #' `lea_get()`downloads the U.S. district shapefile from GitHub.
 #' @usage
-#' lea_get(path = NULL)
+#' lea_get(state = NULL)
 #' 
 #' @param state Either a FIPS code or two-digit abbreviation for the state to 
 #' obtain district shape files. If \code{NULL}, shape files for the entire US 
