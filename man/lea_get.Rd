@@ -7,9 +7,9 @@
 lea_get(path = NULL)
 }
 \arguments{
-\item{path}{A character vector specifying a file path, such as:
-path = "./test". Will attempt to create the directory if it does not
-currently exist.}
+\item{state}{Either a FIPS code or two-digit abbreviation for the state to
+obtain district shape files. If \code{NULL}, shape files for the entire US
+will be downloaded. Can be a vector of multiple states.}
 }
 \value{
 An RDS object and shapefiles.
