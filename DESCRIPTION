@@ -9,7 +9,12 @@ Authors@R:
       person(given = "Joshua",
              family = "Rosenberg",
              role = "aut",
-             email = "jmichaelrosenberg@gmail.com"))
+             email = "jmichaelrosenberg@gmail.com"),
+      person(given = "Daniel",
+             family = "Anderson",
+             role = c("ctb"),
+             email = "daniela@uoregon.edu",
+             comment = c(ORCID = "https://orcid.org/0000-0003-4699-4680")))
 Description: Easier mapping of U.S. school districts by downloading and prepping NCES geography files.
 License: MIT + file LICENSE
 Encoding: UTF-8
