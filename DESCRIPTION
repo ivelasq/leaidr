@@ -28,6 +28,7 @@ Imports:
     devtools,
     piggyback,
     sp,
-    fs
+    fs,
+    shiny
 Depends: 
     R (>= 2.10)

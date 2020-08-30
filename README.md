@@ -56,8 +56,11 @@ Once you have the shapefile, you can plot using {leaflet} and {ggplot2}.
 library(leaidr)
 
 tn <- lea_get("tn")
+#> Warning in OGRSpatialRef(dsn, layer, morphFromESRI = morphFromESRI, dumpSRS
+#> = dumpSRS, : Discarded datum D_unknown in CRS definition: +proj=longlat
+#> +ellps=GRS80 +no_defs
 #> OGR data source with driver: ESRI Shapefile 
-#> Source: "/private/var/folders/pj/nmg9b8_93dq4kwt8nt2d4cj40000gn/T/RtmpHBSznh/47", layer: "47"
+#> Source: "/private/var/folders/pj/nmg9b8_93dq4kwt8nt2d4cj40000gn/T/Rtmp5IIOU1/47", layer: "47"
 #> with 158 features
 #> It has 18 fields
 
@@ -71,8 +74,8 @@ tn %>%
 
 ### Download all states
 
-If you use `lea_get()` (i.e., with state = NULL), you get the whole US
-back via ROpenSci’s {piggyback}
+If you use `lea_get()` (i.e., with `state = NULL`), you get all the
+district shapefiles for the whole U.S. via ROpenSci’s {piggyback}.
 
 ## Acknowlegements
 
