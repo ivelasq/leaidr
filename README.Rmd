@@ -33,52 +33,35 @@ devtools::install_github("ivelasq/leaidr")
 
 School districts in the U.S. have associated local education agency identification numbers (LEAID) used in the [National Center for Education Statistics (NCES)](https://nces.ed.gov/) Common Core of Data. These are very useful because if you have other datasets with NCES ID’s, then you can (sometimes easily) join them.
 
-The original shapefiles can be found on the [NCES](https://nces.ed.gov/programs/edge/Geographic/DistrictBoundaries) site. These files are from 2019.
-
-For now, you must use the state’s FIPS code. FIPS state codes are numeric and two-letter alphabetic codes to identify U.S. states and certain other associated areas. [Here](https://www.mcc.co.mercer.pa.us/dps/state_fips_code_listing.htm) is a table with the codes for quick reference.
+The original shapefiles can be found on the [NCES](https://nces.ed.gov/programs/edge/Geographic/DistrictBoundaries) site. These files are from 2019. All the state-level shapefiles are saved [here](https://github.com/datalorax/us-district-shapefiles/tree/master/individ-districts).
 
 ## Get the U.S. Shapefile
 
-Load the shapefile for the entire U.S. using `lea_get()`. Loading may take a while - large files were uploaded to GitHub using ROpenSci's {piggyback}. You will have to load the shapefile anytime you're in a new directory/project.
+Load the shapefile for the entire U.S. using `lea_get()` and the state abbreviation. Loading may take a while. You will have to load the shapefile anytime you're in a new directory/project.
 
 **You must have a GITHUB_PAT before you can run `lea_get()`.** You can set a token in your [developer settings](https://github.com/settings/tokens) and save it in your R Environment. More info can be found in [Happy git with R](https://happygitwithr.com/github-pat.html).
-
-## Prep a Shapefile
-
-Run the function `lea_prep()` to create a shapefile with district boundaries. If you want the entire U.S., then designate `fips = "All"`. If you want a specific state, then designate it with the state abbrevation `fips = "47"`. To designate multiple states, designate it in a vector `fips = c("47", "06")`.
 
 ## Use the Data
 
 Once you have the shapefile, you can plot using {leaflet} and {ggplot2}.
 
-### ggplot2 Example
+### {ggplot2} Example
 
 ```{r, message = FALSE, dpi = 300}
 library(leaidr)
-library(ggplot2)
-library(mapproj)
 
-# if you haven't downloaded the shapefile
-# lea_get(path = "./leaid_sh")
+tn <- lea_get("tn")
 
-tn <- lea_prep(path = "./leaid_sh", fips = "47")
-
-tn_df <- ggplot2::fortify(tn)
-
-tn_map <-
-  ggplot() +
-  geom_path(data = tn, 
-            aes(x = long, y = lat, group = group),
-            color = "gray", size = .2) +
-  theme_void()
-
-tn_map_projected <- 
-  tn_map +
-  coord_map()
-
-print(tn_map_projected)
+tn %>% 
+  sf::st_as_sf() %>% 
+  ggplot2::ggplot() +
+  ggplot2::geom_sf()
 ```
 
-### Merged Data Example
+### Download all states
 
-You can merge other data to the shapefiles using `merge()`. A walkthrough on how to do this is available on my [blog](https://ivelasq.rbind.io/blog/leaid-shapefiles/).
+If you use `lea_get()` (i.e., with state = NULL), you get the whole US back via ROpenSci's {piggyback}
+
+## Acknowlegements
+
+Many thanks to [datalorax](https://github.com/datalorax) for the incredible improvements to this package.
