@@ -18,5 +18,10 @@ Authors:
   \item Joshua Rosenberg \email{jmichaelrosenberg@gmail.com}
 }
 
+Other contributors:
+\itemize{
+  \item Daniel Anderson \email{daniela@uoregon.edu} (\href{https://orcid.org/0000-0003-4699-4680}{ORCID}) [contributor]
+}
+
 }
 \keyword{internal}

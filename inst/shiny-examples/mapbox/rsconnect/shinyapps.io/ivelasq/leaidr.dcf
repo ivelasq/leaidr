@@ -1,0 +1,13 @@
+name: leaidr
+title: leaidr
+username:
+account: ivelasq
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2724529
+bundleId: 3571903
+url: https://ivelasq.shinyapps.io/leaidr/
+when: 1598771080.55316
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: mapbox.R
