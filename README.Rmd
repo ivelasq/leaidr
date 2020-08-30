@@ -39,11 +39,13 @@ The original shapefiles can be found on the [NCES](https://nces.ed.gov/programs/
 
 Load the shapefile for the entire U.S. using `lea_get()` and the state abbreviation. Loading may take a while. You will have to load the shapefile anytime you're in a new directory/project.
 
+If you use `lea_get()` (i.e., with `state = NULL`), you get all the district shapefiles for the whole U.S. via ROpenSci's {piggyback}.
+
 **You must have a GITHUB_PAT before you can run `lea_get()`.** You can set a token in your [developer settings](https://github.com/settings/tokens) and save it in your R Environment. More info can be found in [Happy git with R](https://happygitwithr.com/github-pat.html).
 
 ## Use the Data
 
-Once you have the shapefile, you can plot using {leaflet} and {ggplot2}.
+Once you have the shapefile, you can plot using packages like {leaflet} and {ggplot2}.
 
 ### {ggplot2} Example
 
@@ -58,9 +60,9 @@ tn %>%
   ggplot2::geom_sf()
 ```
 
-### Download all states
+### Mapbox example
 
-If you use `lea_get()` (i.e., with state = NULL), you get the whole US back via ROpenSci's {piggyback}
+
 
 ## Acknowlegements
 

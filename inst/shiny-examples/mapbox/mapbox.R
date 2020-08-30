@@ -4,25 +4,40 @@
 
 # Libraries ---------------------------------------------------------------
 
+# remotes::install_github("walkerke/mapboxapi")
 library(mapboxapi)
+
+# if you haven't installed the package yet
+# devtools::install_github("ivelasq/leaidr")
 library(leaidr)
+
 library(rmapshaper)
 library(mapdeck)
+library(tidyverse)
 
 # Get Data ----------------------------------------------------------------
 
-northwest <-
+shp <- # leaidr shapefiles
   lea_get(c("or", "wa")) %>% 
   sf::st_as_sf()
+
+dat <- 
+  read_csv("/Users/shortessay/Downloads/ccd_lea_141_1819_l_1a_091019/ccd_lea_141_1819_l_1a_091019.csv") %>%
+  filter(ST %in% c("OR", "WA"))
+
+northwest <-
+  shp %>%
+  select(GEOID, geometry) %>%
+  sp::merge(dat, by.x = "GEOID", by.y = "LEAID")
 
 # Upload to Mapbox --------------------------------------------------------
 
 tippecanoe(
   input = northwest,
-  output = "my_tiles.mbtiles",
+  output = "nw.mbtiles",
   layer_name = "northwest")
 
-upload_tiles(input = "my_tiles.mbtiles",
+upload_tiles(input = "nw.mbtiles",
              username = "ivelasq3", 
              tileset_id = "northwest",
              multipart = TRUE)
